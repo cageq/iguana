@@ -142,6 +142,58 @@ void test_str_view() {
   }
 }
 
+
+
+
+struct FieldInfo  {
+	std::string	reserve1;
+	std::string	ExchangeID;
+	std::string	InstrumentName;
+	std::string	reserve2;
+	std::string	reserve3;
+	char 	ProductClass;
+	int32_t	DeliveryYear;
+	int32_t	DeliveryMonth;
+	int32_t	MaxMarketOrderVolume;
+	int32_t	MinMarketOrderVolume;
+	int32_t	MaxLimitOrderVolume;
+	int32_t	MinLimitOrderVolume;
+	int32_t	VolumeMultiple;
+	double	PriceTick;
+	std::string	CreateDate;
+	std::string	OpenDate;
+	std::string	ExpireDate;
+	std::string	StartDelivDate;
+	std::string	EndDelivDate;
+	char	InstLifePhase;
+	int32_t	IsTrading;
+	char	PositionType;
+	char	PositionDateType;
+	double	LongMarginRatio;
+	double	ShortMarginRatio;
+	char	MaxMarginSideAlgorithm;
+	std::string	reserve4;
+	double	StrikePrice;
+	char	OptionsType;
+	double	UnderlyingMultiple;
+	char	CombinationType;
+	std::string	InstrumentID;
+	std::string	ExchangeInstID;
+	std::string	ProductID;
+	std::string	UnderlyingInstrID;
+};
+
+REFLECTION(FieldInfo,
+           reserve1, ExchangeID, InstrumentName, reserve2, reserve3,
+           ProductClass, DeliveryYear, DeliveryMonth, MaxMarketOrderVolume,
+           MinMarketOrderVolume, MaxLimitOrderVolume, MinLimitOrderVolume,
+           VolumeMultiple, PriceTick, CreateDate, OpenDate, ExpireDate,
+           StartDelivDate, EndDelivDate, InstLifePhase, IsTrading, PositionType,
+           PositionDateType, LongMarginRatio, ShortMarginRatio,
+           MaxMarginSideAlgorithm, reserve4, StrikePrice, OptionsType,
+           UnderlyingMultiple, CombinationType, InstrumentID, ExchangeInstID,
+           ProductID, UnderlyingInstrID);
+
 int main(void) {
   test_disorder();
   test_v();
@@ -157,6 +209,7 @@ int main(void) {
 
   std::cout << p2.name << " - " << p2.age << std::endl;
   test_str_view();
-
+    FieldInfo fieldInfo; 
+  iguana::to_json(fieldInfo, ss);
   return 0;
 }
